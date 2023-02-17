@@ -50,7 +50,12 @@ function onPercentileBtnClick() {
     resultValue.innerHTML = resultValue.innerHTML / 100;
 }
 
-
+function onOperatorBtnClick(event) {
+    resultValue.innerHTML = "";
+    operator = event.target.dataset.value;
+    console.log(operator);
+    return operator;
+}
 
 numberBtns.forEach(number => number.addEventListener("click", onNumberBtnClick));
 operatorBtns.forEach(operator => operator.addEventListener("click", onOperatorBtnClick));
