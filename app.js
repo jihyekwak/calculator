@@ -1,5 +1,6 @@
 const resultValue = document.querySelector("#result");
 const numberBtns = Array.from(document.querySelectorAll(".number"));
+const pointBtn = document.querySelector("#point");
 const operatorBtns = Array.from(document.querySelectorAll(".operator"));
 const clearBtn = document.querySelector("#clear");
 const plusminusBtn = document.querySelector("#plusminus");
@@ -9,8 +10,24 @@ let operator = null;
 
 function onNumberBtnClick(event) {
     const number = event.target.dataset.value;
-    console.log(number);
-    resultValue.innerHTML = number;
+    if (number == '.') {
+        pointBtnOff();
+        resultValue.innerHTML = resultValue.innerHTML + number;
+    } else {
+        if (resultValue.innerHTML == '0') {
+            resultValue.innerHTML = number;
+        } else {
+            resultValue.innerHTML = resultValue.innerHTML + number;
+        }
+    }
+}
+
+function pointBtnOn() {
+    pointBtn.addEventListener("click", onNumberBtnClick);
+}
+
+function pointBtnOff() {
+    pointBtn.removeEventListener("click", onNumberBtnClick);
 }
 
 function onOperatorBtnClick(event) {
@@ -22,6 +39,7 @@ function onOperatorBtnClick(event) {
 function onClearBtnClick() {
     resultValue.innerHTML = 0;
     operator = null;
+    pointBtnOn();
 }
 
 function onPlusminusBtnClick() {
