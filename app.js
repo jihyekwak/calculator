@@ -2,6 +2,8 @@ const resultValue = document.querySelector("#result");
 const numberBtns = Array.from(document.querySelectorAll(".number"));
 const operatorBtns = Array.from(document.querySelectorAll(".operator"));
 const clearBtn = document.querySelector("#clear");
+const plusminusBtn = document.querySelector("#plusminus");
+const percentileBtn = document.querySelector("#percentile");
 
 let operator = null;
 
@@ -22,6 +24,18 @@ function onClearBtnClick() {
     operator = null;
 }
 
+function onPlusminusBtnClick() {
+    resultValue.innerHTML = resultValue.innerHTML * -1;
+}
+
+function onPercentileBtnClick() {
+    resultValue.innerHTML = resultValue.innerHTML / 100;
+}
+
+
+
 numberBtns.forEach(number => number.addEventListener("click", onNumberBtnClick));
 operatorBtns.forEach(operator => operator.addEventListener("click", onOperatorBtnClick));
 clearBtn.addEventListener("click", onClearBtnClick);
+plusminusBtn.addEventListener("click", onPlusminusBtnClick);
+percentileBtn.addEventListener("click", onPercentileBtnClick);
